@@ -21,7 +21,7 @@ void algorithm1(long T, const Arrangement_2& A){
 
     // for-loop over T
     for (i = 0; i < T; i++){
-        auto [guard, e_new, p_new, isFinished] =  greedyStep(A, e, p);
+        auto [guard, e_new, p_new, isFinished] =  greedyInterval(A, e, p);
         if (isFinished) {
             return;
         }
@@ -43,7 +43,7 @@ void algorithm1(long T, const Arrangement_2& A){
 
     for (j = 0; j < A.number_of_vertices(); j++) {
         std::optional<Point> start = (j != 0 ? std::optional<Point>(repetitionPoint) : std::nullopt);
-        auto [guard, e_new, p_new, isFinished] =  greedyStep(A, e, p, start);
+        auto [guard, e_new, p_new, isFinished] =  greedyInterval(A, e, p, start);
 
         Gs.emplace_back(guard);
         Cs.emplace_back(p);
