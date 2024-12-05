@@ -38,20 +38,22 @@ int main(int argc, char* argv[]) {
     // Parse input parameters
     int n = std::atoi(argv[1]);
 
-    //    Polygon needing 3 guards: https://www.desmos.com/geometry/6iocdgnncv
-    //    std::vector<Point> points = {Point(0,0), Point(5,-1), Point(4,0), Point(8,-2), Point(8,2), Point(4, 1), Point(6, 4),
-    //                                     Point(10, 2), Point(8, 8), Point(4, 8), Point(6, 10), Point(0, 10), Point(0, 6), Point(8, 6)};
-
-    //    Polygon needing 2 guards: https://www.desmos.com/geometry/ekruamhxwc
-    //    std::vector<Point> points = {Point(0,0), Point(3, 2), Point(4, 0), Point(4 ,5), Point(1, 2), Point(0, 4)};
-    //
-    //    std::vector<Segment> segments;
-    //    for (int i = 0; i < points.size(); i++) {
-    //        segments.emplace_back(points[i], points[(i + 1) % points.size()]);
-    //    }
+//        Polygon needing 3 guards: https://www.desmos.com/geometry/6iocdgnncv
+//        std::vector<Point> points = {Point(0,0), Point(5,-1), Point(4,0), Point(8,-2), Point(8,2), Point(4, 1), Point(6, 4),
+//                                         Point(10, 2), Point(8, 8), Point(4, 8), Point(6, 10), Point(0, 10), Point(0, 6), Point(8, 6)};
+//
+//        Polygon needing 2 guards: https://www.desmos.com/geometry/ekruamhxwc
+//        std::vector<Point> points = {Point(0,0), Point(3, 2), Point(4, 0), Point(4 ,5), Point(1, 2), Point(0, 4)};
+//
+//        std::vector<Segment> segments;
+//        for (int i = 0; i < points.size(); i++) {
+//            segments.emplace_back(points[i], points[(i + 1) % points.size()]);
+//        }
+//
+//    Arrangement_2 P;
+//    CGAL::insert_non_intersecting_curves(P, segments.begin(), segments.end());
 
     Arrangement_2 P = polygon_to_arrangement(generate_random_polygon(n, 0));  // change seed to get a different random polygons
-
     algorithm1(100 * n, P);
 
 
