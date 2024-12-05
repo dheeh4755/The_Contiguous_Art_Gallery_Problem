@@ -14,8 +14,8 @@ where `C:/Users/Bruger/vcpkg` should be replaced with the path to your vcpkg ins
 
 ## Running the implementation
 The main function takes a single argument, `n`, the number of vertices of the polygon.
-By default, the implementation generates a random simple polygon with `n` vertices.
-The main function also includes out commented code to generate two specific polygons.
+By default, the implementation generates a random simple polygon.
+The main function also includes commented code to generate two specific polygons.
 
 Build the project using CMake and run the executable with the number of vertices as an argument.
 For example, to run the implementation on a polygon with 10 vertices, run:
@@ -32,5 +32,5 @@ optimal solution.
 ## Degeneracies
 We assume the input is in general position, i.e. no three points are collinear.
 This simplifies the implementation, eg. we can assume that visibility polygons do not have 'needles' (see https://doc.cgal.org/latest/Visibility_2/index.html#Chapter_2D_Visibility_Computation).
-For inputs with collinear points, the computed feasible regions may be smaller than the actual feasible region, leading to a greedy step that is shorter it should be.
-The solution produced by the algorithm is still valid, but may use one more guard than is optimal.
+For inputs with collinear points, the computed feasible regions may be smaller than the actual feasible region, leading to a greedy step that is shorter than it should be.
+The solution produced by the algorithm is still valid but may use one more guard than is optimal.
