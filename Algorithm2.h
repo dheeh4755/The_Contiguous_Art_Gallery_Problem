@@ -3,7 +3,7 @@
 
 #include "Helper.h"
 
-std::tuple<Point, Halfedge_circulator, Point, bool> greedyStep(const Arrangement_2&, Halfedge_circulator e, Point p, const std::optional<Point>& start = std::nullopt);
+std::tuple<Point, Halfedge_circulator, Point, bool> greedyInterval(const Arrangement_2&, Halfedge_circulator e, Point p, const std::optional<Point>& start = std::nullopt);
 
 Arrangement_2 computeVisibilityArrangementGeneral(const Arrangement_2& A, const Point& p);
 
