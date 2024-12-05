@@ -2,6 +2,69 @@
 #include <CGAL/Polygon_2.h>
 
 
+
+Arrangement_2 computeVisibilityArrangementAtEdge(const Arrangement_2 & A, const Point& p, Halfedge_const_handle e) {
+    Arrangement_2 VA;
+    VA_type VP_calculator(A);
+    VP_calculator.compute_visibility(p, e, VA);
+    return VA;
+}
+
+Arrangement_2 computeVisibilityArrangementAtFace(const Arrangement_2 & A, const Point& p) {
+    Face_const_handle f;
+    if (A.edges_begin()->face()->is_unbounded()){
+        f = A.edges_begin()->twin()->face();
+    }
+    else {
+        f = A.edges_begin()->face();
+    }
+
+    Arrangement_2 VA;
+    VP_type_non_regular_face VP_calculator(A);
+    VP_calculator.compute_visibility(p, f, VA);
+
+    return VA;
+}
+
+Arrangement_2 computeVisibilityArrangementGeneral(const Arrangement_2& A, const Point& p) {
+    Arrangement_2 VP;
+
+    for (auto eA: getEdgesOfArrangement(A)) {
+        if (pointIsOnEdgeButNotSource(p, eA)) {
+            VP = computeVisibilityArrangementAtEdge(A, p, eA);
+            break;
+        }
+    }
+
+    if (VP.is_empty()) {
+        VP = computeVisibilityArrangementAtFace(A, p);
+    }
+    return VP;
+}
+
+
+std::vector<Point> findAllIntersectionsBetweenEdgesOfPolygons(const Polygon_2& P, const Polygon_2& Q){
+    std::vector<Point> I;
+    for (auto eP: P.edges()) {
+        for (auto eQ: Q.edges()) {
+            auto intersection = CGAL::intersection(eP, eQ);
+            if (intersection) {
+                const Point *pI = std::get_if<Point>(&*intersection);
+                I.push_back(*pI);
+            }
+        }
+    }
+    return I;
+}
+
+bool passedStart(const Halfedge_circulator e, const std::optional<Point>& start, const Point p) {
+    if (start.has_value() and pointIsOnEdgeButNotSource(start.value(), e)){
+        // check if 'p' is closer than 'start' to 'e''s target
+        return CGAL::squared_distance(p, e->target()->point()) <= CGAL::squared_distance(start.value(), e->target()->point());
+    }
+    return false;
+}
+
 bool isInGeneralPosition(const Arrangement_2 & A) {
     std::vector<Point> Ps = getVerticesOfArrangement(A);
     int n = Ps.size();
