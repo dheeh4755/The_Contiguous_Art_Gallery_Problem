@@ -1,6 +1,6 @@
 # An Algorithm for the Contiguous Facility Art Gallery Problem
 
-This repository contains the implementation of an algorithm for the Contiguous Facility Art Gallery Problem as 
+This repository contains the implementation of an algorithm for the Contiguous Art Gallery Problem as 
 described in the paper "The Contiguous Art Gallery Problem is Solvable in
 Polynomial Time" submitted to the 2025 International Symposium on Computational Geometry (SoCG) by Anonymous Authors.
 
