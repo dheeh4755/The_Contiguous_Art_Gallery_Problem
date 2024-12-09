@@ -1,6 +1,6 @@
 #include "Helper.h"
 #include <CGAL/Polygon_2.h>
-
+//#include <CGAL/draw_arrangement_2.h>
 
 
 Arrangement_2 computeVisibilityArrangementAtEdge(const Arrangement_2 & A, const Point& p, Halfedge_const_handle e) {
@@ -231,14 +231,14 @@ bool pointIsOnEdgeButNotSource(const Point& p, Halfedge_circulator e) {
     return true;
 }
 
-void drawArrangements(const Arrangement_2& A1, const Arrangement_2& A2) {
-    Arrangement_2 A_merged;
-    for (auto edge = A1.edges_begin(); edge != A1.edges_end(); ++edge) {
-        A_merged.insert_in_face_interior(Segment(edge->source()->point(), edge->target()->point()), A_merged.unbounded_face());
-    }
-
-    for (auto edge = A2.edges_begin(); edge != A2.edges_end(); ++edge) {
-        A_merged.insert_in_face_interior(Segment(edge->source()->point(), edge->target()->point()), A_merged.unbounded_face());
-    }
-    CGAL::draw(A_merged);
-}
+//void drawArrangements(const Arrangement_2& A1, const Arrangement_2& A2) {
+//    Arrangement_2 A_merged;
+//    for (auto edge = A1.edges_begin(); edge != A1.edges_end(); ++edge) {
+//        A_merged.insert_in_face_interior(Segment(edge->source()->point(), edge->target()->point()), A_merged.unbounded_face());
+//    }
+//
+//    for (auto edge = A2.edges_begin(); edge != A2.edges_end(); ++edge) {
+//        A_merged.insert_in_face_interior(Segment(edge->source()->point(), edge->target()->point()), A_merged.unbounded_face());
+//    }
+//    CGAL::draw(A_merged);
+//}
