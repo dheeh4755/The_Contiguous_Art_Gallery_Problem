@@ -6,11 +6,15 @@ Polynomial Time" submitted to the 2025 International Symposium on Computational 
 
 ## Dependencies and setup
 The implementation uses the Computational Geometry Algorithms Library (CGAL) and the Boost Graph Library (BGL).
-To install CGAL, follow their website (https://doc.cgal.org/latest/Manual/general_intro.html).
+To install CGAL, follow the instructions on their website (https://doc.cgal.org/latest/Manual/general_intro.html).
+Note the `Qt6` library is not required by default but is necessary for visualizations (the function `drawArrangement` and the include statement `//#include <CGAL/draw_arrangement_2.h>` in `Helper.cpp` are commented). 
+
 
 On Windows, when using Vcpkg with CMake, the following CMake options might be needed:
 `-DCMAKE_TOOLCHAIN_FILE=C:/Users/Bruger/vcpkg/scripts/buildsystems/vcpkg.cmake` 
 where `C:/Users/Bruger/vcpkg` should be replaced with the path to your vcpkg installation directory.
+
+
 
 ## Running the implementation
 The main function takes a single argument, `n`, the number of vertices of the polygon.
