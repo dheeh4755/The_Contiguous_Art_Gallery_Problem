@@ -1,7 +1,6 @@
 #ifndef CONTIGUOUSARTGALLERY_HELPER_H
 #define CONTIGUOUSARTGALLERY_HELPER_H
 
-#include <CGAL/draw_arrangement_2.h>
 #include <CGAL/Exact_predicates_exact_constructions_kernel.h>
 #include <CGAL/Segment_2.h>
 #include <CGAL/Arrangement_2.h>
